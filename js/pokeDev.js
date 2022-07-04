@@ -23,7 +23,7 @@ function loadpk(){
         .then((data) => {
 
             
-            console.log(data['name'])   
+              
             document.querySelector('.pk-name').innerHTML = data['name']
             let imgPk = data['sprites']['front_default']
             document.querySelector('.pk-img').setAttribute('src', imgPk)
@@ -33,7 +33,7 @@ function loadpk(){
         .catch((erro) => {
 
             console.log("Erro:" + erro)
-            alert( `O Pokemon "${pkText}", não existe. Digite um nome valido. `)
+
             console.clear()
             
             
@@ -64,28 +64,25 @@ function loadList(){
 
     Promise.all(arrayPk)
         .then(pokemons =>{
-            let lisPk = pokemons.reduce((accumulator, pokemons) =>{
-                let types = pokemons.types.map(typeInfo => typeInfo.type.name)
-                let img = pokemons['sprites']['front_default']
-                accumulator += `
-                <li class="card ${types[0]}">
-                    <img class = "card-image" alt="${pokemons.name}" src = "${img}">
-                    <h3 class ="card-title">${pokemons.id} ${pokemons.name}<h3>
-                    <p class ="card-subtitle">${types.join( ' | ')}<p>
-                </li>
-                `
-                return accumulator
-            },'')
+        let lisPk = pokemons.reduce((accumulator, pokemons) =>{
+            let types = pokemons.types.map(typeInfo => typeInfo.type.name)
+            let img = pokemons['sprites']['front_default']
+            accumulator += `
+            <li class="card ${types[0]}">
+                <img class = "card-image" alt="${pokemons.name}" src = "${img}">
+                <h3 class ="card-title">${pokemons.id} ${pokemons.name}<h3>
+                <p class ="card-subtitle">${types.join( ' | ')}<p>
+            </li>
+            `
+            return accumulator
+        },'')
 
-            let ul = document.querySelector('[data-js="pokedex"]')
-            ul.innerHTML = lisPk
-            
-        })
+        let ul = document.querySelector('[data-js="pokedex"]')
+        ul.innerHTML = lisPk
+        
+    })
 
-        .catch((erro) =>{
-
-
-        }) 
+        
 }
 loadList()
 
