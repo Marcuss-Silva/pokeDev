@@ -14,28 +14,31 @@
         <h1> Pokemons</h1>
         <div class="conteiner-card">
             <div class="conteiner-card-left">
-
                 <h2 class="pk-name"></h2>
                 <img src="" alt="" class="pk-img">
-                <p id="pk-id"></p>
-
+                
             </div>
         </div>
         <div id="conteiner-btn">
+            <form action="">
+                <input type="text" name="pk-text" id="pk-text" placeholder="Pesquise seu pokemon" >
 
-            <input type="text" name="pk-text" id="pk-text" placeholder="Pesquise seu pokemon" list="historico">
-            
-            <button type="submit" id="pk-btn">
+                <button type="submit" id="pk-btn">
 
-                <ion-icon name="search" id="pk-search"></ion-icon>
-            </button> 
+
+
+                    <ion-icon name="search" id="pk-search"></ion-icon>
+                </button> 
+
+
+            </form>
         </div>
 
         <p id="pk-erro"></p>
     </section>
     <section id="cont-list">
 
-        <h2 class="pk-name2"> NOME</h2>
+        <h2 class="pk-name2"> Database Pokemon</h2>
         <ul data-js="pokedex" class="pokedex"></ul>
            
     </section>

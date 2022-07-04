@@ -1,10 +1,12 @@
 
 
 function loadpk(){
-    let pkText = document.querySelector('#pk-text').value
-    let pkErro = document.querySelector('#pk-erro')
-    if(pkText == ''){
-
+    
+    let pkText1 = document.querySelector('#pk-text').value
+    let pkText = pkText1.toLowerCase()
+    
+    if(pkText == ''){ 
+        
         alert('Digite nome do pokemon!!!')
     }
     
@@ -20,7 +22,7 @@ function loadpk(){
         })
         .then((data) => {
 
-            console.clear()
+            
             console.log(data['name'])   
             document.querySelector('.pk-name').innerHTML = data['name']
             let imgPk = data['sprites']['front_default']
@@ -31,19 +33,26 @@ function loadpk(){
         .catch((erro) => {
 
             console.log("Erro:" + erro)
+            alert( `O Pokemon "${pkText}", não existe. Digite um nome valido. `)
             console.clear()
-            pkErro.innerHTML = `<strong>${pkText}´</strong> não foi encontrado na lista de pokemons`
-            setTimeout(function() {
-                pkErro.style.opacity = 0;
-                
-            }, 5000)
             
             
+         
             
         })
     }
+    
+    
+    
 }
-document.querySelector('#pk-btn').onclick = loadpk
+
+let pkBtn2 = document.querySelector('#pk-btn')
+pkBtn2.addEventListener('click', function(e){
+    e.preventDefault()
+    loadpk()
+    
+})
+
 function loadList(){
     let urlList = id => `https://pokeapi.co/api/v2/pokemon/${id}/`
 
